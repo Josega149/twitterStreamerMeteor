@@ -19,13 +19,14 @@ export class App extends Component {
   }
 
   setProjection(pr){
+    this.coordenadas = [];
     this.projection = pr;
     console.log("se definio la projection");
     for(var i=0; i< this.props.tweets.length;i++){
 
       var nuevaCoordenada = this.projection(this.props.tweets[i].coordinates.coordinates);
-      console.log("nueva coordenada");
-      console.log(nuevaCoordenada);
+      //console.log("nueva coordenada");
+      //console.log(nuevaCoordenada);
       this.coordenadas.push(nuevaCoordenada);
     }
     console.log("todas las coordenadas");
@@ -52,16 +53,16 @@ export class App extends Component {
 
     return (
       <div>
-        <div className="col-md-6">
-          <CanvasSuperiorAMapa coordenadas={this.coordenadas} ></CanvasSuperiorAMapa>
+        <div >
           <ColombiaMap
             width="600"
             height="600"
             data={{RISARALDA:0}}
             projection={this.setProjection}
           ></ColombiaMap>
+          <CanvasSuperiorAMapa  coordenadas={this.coordenadas} ></CanvasSuperiorAMapa>
         </div>
-        <div className="col-md-6"><input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
+        <div ><input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
         { this.props && this.props.err ?
           <div>Error: {this.props.err}</div> :
           <span></span>

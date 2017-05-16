@@ -263,8 +263,8 @@ export default class ColombiaMap extends Component {
     var laProjection = this.getProjection();
     this.props.projection(laProjection);
 		return (
-			<div className="colombiaMap">
-				<svg
+			<div className="colombiaMap" style={{position:"absolute", "pointer-events":"none"}}>
+				<svg className="svgMap"
 					ref={(svg) => {this.svg = svg; }}>
 				</svg>
 			</div>);

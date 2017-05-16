@@ -29,5 +29,12 @@ text.big-text{
 }
 
 #myCanvas{
-  
+  z-index: 9999 !important;
+}
+
+.colombiaMap{
+  z-index: -1 !important;
+}
+.svgMap{
+  z-index: -1 !important;
 }
