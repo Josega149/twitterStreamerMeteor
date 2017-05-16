@@ -6,7 +6,7 @@ import { createContainer} from "meteor/react-meteor-data"
 import TweetsResults from "./TweetsResults.jsx";
 import {Tweets} from "../api/Tweets.js";
 import ColombiaMap from "./ColombiaMap.jsx";
-import canvasSuperiorAMapa from "./canvasSuperiorAMapa.jsx";
+import CanvasSuperiorAMapa from "./CanvasSuperiorAMapa.jsx";
 
 export class App extends Component {
 
@@ -20,6 +20,12 @@ export class App extends Component {
   setProjection(pr){
     this.projection = pr;
     console.log("se definio la projection");
+    for(var i=0; i< this.props.tweets.lenth;i++){
+      var nuevaCoordenada = this.projection(this.props.tweets.coordinates.coordinates);
+      this.coordenadas.push(nuevaCoordenada);
+    }
+    console.log(this.coordenadas);
+
   }
 
   changeQuery(evt) {
@@ -42,7 +48,7 @@ export class App extends Component {
     return (
       <div>
         <div className="col-md-6">
-          <canvasSuperiorAMapa></canvasSuperiorAMapa>
+          <CanvasSuperiorAMapa  ></CanvasSuperiorAMapa>
           <ColombiaMap
             width="600"
             height="600"

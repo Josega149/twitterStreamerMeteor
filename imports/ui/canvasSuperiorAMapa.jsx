@@ -3,16 +3,15 @@ import { Meteor } from "meteor/meteor";
 import manejadorCanvas from "./manejadorCanvas.js";
 
 
-export default class canvasSuperiorAMapa extends Component {
+export default class CanvasSuperiorAMapa extends Component {
   constructor(props) {
     super(props);
-
   }
   render() {
-    console.log("eroiajfajfaisjfañ");
+    var projection = this.props.projection;
     return (
       <div className="canvas">
-        <canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+        <canvas id="myCanvas" width="600" height="600"></canvas>
       </div>
     );
   }
