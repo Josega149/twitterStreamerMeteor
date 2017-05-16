@@ -21,17 +21,15 @@ export class App extends Component {
   setProjection(pr){
     this.coordenadas = [];
     this.projection = pr;
+    var max =0;
     console.log("se definio la projection");
     for(var i=0; i< this.props.tweets.length;i++){
-
       var nuevaCoordenada = this.projection(this.props.tweets[i].coordinates.coordinates);
-      //console.log("nueva coordenada");
-      //console.log(nuevaCoordenada);
+      nuevaCoordenada.push(this.props.tweets[i].id);
       this.coordenadas.push(nuevaCoordenada);
     }
-    console.log("todas las coordenadas");
-    console.log(this.coordenadas);
-
+    //console.log("todas las coordenadas");
+    //console.log(this.coordenadas);
   }
 
   changeQuery(evt) {
