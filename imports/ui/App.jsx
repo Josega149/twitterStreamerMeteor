@@ -24,8 +24,10 @@ export class App extends Component {
     var max =0;
     console.log("se definio la projection");
     for(var i=0; i< this.props.tweets.length;i++){
+      console.log(this.props.tweets[i]);
       var nuevaCoordenada = this.projection(this.props.tweets[i].coordinates.coordinates);
       nuevaCoordenada.push(this.props.tweets[i].id);
+      nuevaCoordenada.push(this.props.tweets[i].entities.hashtags);
       this.coordenadas.push(nuevaCoordenada);
     }
     //console.log("todas las coordenadas");
