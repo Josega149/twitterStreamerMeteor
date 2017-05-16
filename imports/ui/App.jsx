@@ -51,16 +51,16 @@ export class App extends Component {
 
     return (
       <div>
-        <div >
+        <div className="col-md-6"><div >
           <ColombiaMap
-            width="600"
-            height="600"
+            width="700"
+            height="700"
             data={{RISARALDA:0}}
             projection={this.setProjection}
           ></ColombiaMap>
           <CanvasSuperiorAMapa  coordenadas={this.coordenadas} ></CanvasSuperiorAMapa>
-        </div>
-        <div ><input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
+        </div></div>
+        <div className="col-md-6"><div ><input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
         { this.props && this.props.err ?
           <div>Error: {this.props.err}</div> :
           <span></span>
@@ -69,7 +69,7 @@ export class App extends Component {
         {this.props && this.props.tweets ?
           <TweetsResults tweets={this.props.tweets}/> :
           <p>Enter a query</p>
-        }</div>
+        }</div></div>
 
 
       </div>

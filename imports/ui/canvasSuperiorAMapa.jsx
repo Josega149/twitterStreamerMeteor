@@ -41,7 +41,7 @@ export default class CanvasSuperiorAMapa extends Component {
   render() {
     return (
       <div className="canvas"  >
-        <canvas id="myCanvas" ref='canvas' width="600" height="600"></canvas>
+        <canvas id="myCanvas" ref='canvas' width="700" height="700"></canvas>
       </div>
     );
   }
