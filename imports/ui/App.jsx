@@ -14,16 +14,21 @@ export class App extends Component {
     super(props);
 
     this.projection;
+    this.coordenadas = [];
     this.setProjection = this.setProjection.bind(this);
   }
 
   setProjection(pr){
     this.projection = pr;
     console.log("se definio la projection");
-    for(var i=0; i< this.props.tweets.lenth;i++){
-      var nuevaCoordenada = this.projection(this.props.tweets.coordinates.coordinates);
+    for(var i=0; i< this.props.tweets.length;i++){
+
+      var nuevaCoordenada = this.projection(this.props.tweets[i].coordinates.coordinates);
+      console.log("nueva coordenada");
+      console.log(nuevaCoordenada);
       this.coordenadas.push(nuevaCoordenada);
     }
+    console.log("todas las coordenadas");
     console.log(this.coordenadas);
 
   }
@@ -48,11 +53,11 @@ export class App extends Component {
     return (
       <div>
         <div className="col-md-6">
-          <CanvasSuperiorAMapa  ></CanvasSuperiorAMapa>
+          <CanvasSuperiorAMapa coordenadas={this.coordenadas} ></CanvasSuperiorAMapa>
           <ColombiaMap
             width="600"
             height="600"
-            data={{RISARALDA:10, CALDAS:12}}
+            data={{RISARALDA:0}}
             projection={this.setProjection}
           ></ColombiaMap>
         </div>
