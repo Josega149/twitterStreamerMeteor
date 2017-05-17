@@ -16,6 +16,12 @@ export class App extends Component {
     this.projection;
     this.coordenadas = [];
     this.setProjection = this.setProjection.bind(this);
+    this.masUsado = this.masUsado.bind(this);
+    listaDeHashtagsMasUsados = ""
+  }
+
+  masUsado(stringMasUsados){
+    this.listaDeHashtagsMasUsados = stringMasUsados;
   }
 
   setProjection(pr){
@@ -61,7 +67,8 @@ export class App extends Component {
             data={{RISARALDA:0}}
             projection={this.setProjection}
           ></ColombiaMap>
-          <CanvasSuperiorAMapa  coordenadas={this.coordenadas} ></CanvasSuperiorAMapa>
+          <CanvasSuperiorAMapa masUsado={this.masUsado}  coordenadas={this.coordenadas} ></CanvasSuperiorAMapa>
+          {this.listaDeHashtagsMasUsados}
         </div></div>
         <div className="col-md-6"><div ><input className="col-md-12" type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Para iniciar, presiona Enter aquí!"/>
         { this.props && this.props.err ?

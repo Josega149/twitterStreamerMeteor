@@ -66,8 +66,14 @@ export default class CanvasSuperiorAMapa extends Component {
     //por cada atributo en hashDeHashtags (o sea cada hashtag que han creado)
     //va a crear un cluster con todos los tweets que lo mencionaron
     console.log("va a pintar todos los hashtags");
+    var masUsado = "";
+    var cuantosMasUsado =0;
     for (var property in this.hashDeHashtags) {
         if (this.hashDeHashtags.hasOwnProperty(property)) {
+          if(cuantosMasUsado < this.hashDeHashtags[property].length){
+            cuantosMasUsado = this.hashDeHashtags[property].length;
+            masUsado = "El hashtag más usado es: "+property;
+          }
           ctx.beginPath();
           console.log("property  ");
           console.log(property);
@@ -85,6 +91,7 @@ export default class CanvasSuperiorAMapa extends Component {
           }
         }
     }
+    this.props.masUsado(masUsado);
 
   }
   render() {
