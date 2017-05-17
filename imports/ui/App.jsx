@@ -68,6 +68,7 @@ export class App extends Component {
           <div>Error: {this.props.err}</div> :
           <span></span>
         }
+        <br/>
         <h2>Results:</h2>
         {this.props && this.props.tweets ?
           <TweetsResults tweets={this.props.tweets}/> :

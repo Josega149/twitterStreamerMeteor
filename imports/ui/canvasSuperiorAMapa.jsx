@@ -72,12 +72,16 @@ export default class CanvasSuperiorAMapa extends Component {
           console.log("property  ");
           console.log(property);
           //property es una lista con los x y
+
+          let b = Math.floor(Math.random()*150);
+          let g = Math.floor(Math.random()*150);
+          let r = Math.floor(Math.random()*150);
           for(var i=0; i< this.hashDeHashtags[property].length;i++){
+
             var coordenadasActuales = this.hashDeHashtags[property][i];
             ctx.arc(coordenadasActuales.x,coordenadasActuales.y,2,0,2*Math.PI,true);
+            ctx.strokeStyle = 'rgba('+r+","+g+","+b+',255)';
             ctx.stroke();
-            ctx.fillStyle = 'black';
-            ctx.fill();
           }
         }
     }
