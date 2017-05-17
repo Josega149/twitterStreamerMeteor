@@ -9,7 +9,7 @@ export default class CanvasSuperiorAMapa extends Component {
     this.hashDeHashtags = {};
   }
   componentWillUpdate(nextP){
-    console.log(nextP);
+    //console.log(nextP);
     var c=document.getElementById("myCanvas");
     var ctx=c.getContext("2d");
 
@@ -29,11 +29,17 @@ export default class CanvasSuperiorAMapa extends Component {
           var listaDeHashtags = coordenadasActuales[3];
           for(var j=0;j< listaDeHashtags.length;j++){
             var hashtagActual = listaDeHashtags[j].text;
-            this.hashDeHashtags.hashtagActual = [{'x':coordenadasActuales[0], 'y':coordenadasActuales[1]}].concat(this.hashDeHashtags.hashtagActual);
+            if(this.hashDeHashtags[hashtagActual]){
+                this.hashDeHashtags[hashtagActual] = this.hashDeHashtags[hashtagActual].concat({'x':coordenadasActuales[0], 'y':coordenadasActuales[1]});
+            }
+            else{
+              this.hashDeHashtags[hashtagActual] = [{'x':coordenadasActuales[0], 'y':coordenadasActuales[1]}];
+            }
+
             console.log("el hashtag: ");
             console.log(hashtagActual);
             console.log("Tiene la siguiente lista de coordenadas: ");
-            console.log(this.hashDeHashtags.hashtagActual);
+            console.log(this.hashDeHashtags[hashtagActual]);
           }
           if(listaDeHashtags.length === 0){
             ctx.beginPath();
@@ -59,12 +65,15 @@ export default class CanvasSuperiorAMapa extends Component {
     var ctx=c.getContext("2d");
     //por cada atributo en hashDeHashtags (o sea cada hashtag que han creado)
     //va a crear un cluster con todos los tweets que lo mencionaron
+    console.log("va a pintar todos los hashtags");
     for (var property in this.hashDeHashtags) {
         if (this.hashDeHashtags.hasOwnProperty(property)) {
           ctx.beginPath();
+          console.log("property  ");
+          console.log(property);
           //property es una lista con los x y
-          for(var i=0; i< property.length;i++){
-            var coordenadasActuales = property[i];
+          for(var i=0; i< this.hashDeHashtags[property].length;i++){
+            var coordenadasActuales = this.hashDeHashtags[property][i];
             ctx.arc(coordenadasActuales.x,coordenadasActuales.y,2,0,2*Math.PI,true);
             ctx.stroke();
             ctx.fillStyle = 'black';

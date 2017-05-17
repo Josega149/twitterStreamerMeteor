@@ -22,7 +22,7 @@ export class App extends Component {
     this.coordenadas = [];
     this.projection = pr;
     var max =0;
-    console.log("se definio la projection");
+    //console.log("se definio la projection");
     for(var i=0; i< this.props.tweets.length;i++){
       //console.log(this.props.tweets[i]);
       var nuevaCoordenada = this.projection(this.props.tweets[i].coordinates.coordinates);
@@ -53,7 +53,7 @@ export class App extends Component {
 
     return (
       <div>
-        <div className="col-md-12 center"> <h2>Jose Gabriel Tamura - Examen final</h2></div>
+        <div className="col-md-12 center"> <h2>Jose Gabriel Tamura - Examen final</h2><br/> <br/></div>
         <div className="col-md-6"><div >
           <ColombiaMap
             width="700"
