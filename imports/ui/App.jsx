@@ -53,7 +53,7 @@ export class App extends Component {
 
     return (
       <div>
-        <div className="col-md-12 center"> <h2>Jose Gabriel Tamura - Examen final</h2><br/> <br/></div>
+        <div className="col-md-12 center"> <h1>Twitter Streamer with # Clustering</h1><h4>Jose Gabriel Tamura</h4><br/> <br/></div>
         <div className="col-md-6"><div >
           <ColombiaMap
             width="700"
@@ -63,7 +63,7 @@ export class App extends Component {
           ></ColombiaMap>
           <CanvasSuperiorAMapa  coordenadas={this.coordenadas} ></CanvasSuperiorAMapa>
         </div></div>
-        <div className="col-md-6"><div ><input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
+        <div className="col-md-6"><div ><input className="col-md-12" type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Para iniciar, presiona Enter aquí!"/>
         { this.props && this.props.err ?
           <div>Error: {this.props.err}</div> :
           <span></span>
@@ -71,7 +71,7 @@ export class App extends Component {
         <h2>Results:</h2>
         {this.props && this.props.tweets ?
           <TweetsResults tweets={this.props.tweets}/> :
-          <p>Enter a query</p>
+          <p>Presiona Enter para comenzar la busqueda</p>
         }</div></div>
 
 
