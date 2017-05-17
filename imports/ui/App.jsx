@@ -68,7 +68,8 @@ export class App extends Component {
             projection={this.setProjection}
           ></ColombiaMap>
           <CanvasSuperiorAMapa masUsado={this.masUsado}  coordenadas={this.coordenadas} ></CanvasSuperiorAMapa>
-          {this.listaDeHashtagsMasUsados}
+          <h3>{this.listaDeHashtagsMasUsados}</h3>
+          
         </div></div>
         <div className="col-md-6"><div ><input className="col-md-12" type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Para iniciar, presiona Enter aquí!"/>
         { this.props && this.props.err ?
